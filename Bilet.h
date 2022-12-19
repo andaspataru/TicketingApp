@@ -24,6 +24,7 @@ public:
 	Bilet();
 	Bilet(int, int, int*, int, int,float*,string,float, string, float);
 	~Bilet();
+	Bilet(const Bilet& );
 
 	int getId();
 	int getNrRanduri();
