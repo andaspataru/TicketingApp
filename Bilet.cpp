@@ -58,6 +58,41 @@ Bilet::Bilet(int nrRanduri, int nrLocuri,int* scaune, int bileteVandute, int nrC
 	
 }
 
+Bilet::Bilet(const Bilet& b) {
+	this->nrRanduri =b.nrRanduri;
+	this->bileteVandute = b.bileteVandute;
+	this->zona = b.zona;
+	this->pret = b.pret;
+	this->metodaLivrare = b.metodaLivrare;
+	this->costLivrare = b.costLivrare;
+
+	if (b.scaune != nullptr && b.nrLocuri > 0) {
+		this->nrLocuri = b.nrLocuri;
+		this->scaune = new int[b.nrLocuri];
+		for (int i = 0; i < b.nrLocuri; i++) {
+			this->scaune[i] = i + 1;
+		}
+	}
+	else {
+		this->scaune = nullptr;
+		this->nrLocuri = 0;
+	}
+
+	if (b.listaPreturi != nullptr && b.nrCateg > 0) {
+		this->nrCateg = b.nrCateg;
+		this->listaPreturi = new float[b.nrCateg];
+		for (int i = 0; i < b.nrCateg; i++)
+		{
+			this->listaPreturi[i] = b.listaPreturi[i];
+		}
+	}
+	else {
+		this->listaPreturi = nullptr;
+		this->nrCateg = 0;
+	}
+
+}
+
 //destructor
 Bilet::~Bilet() {
 	if (this->scaune != nullptr)
