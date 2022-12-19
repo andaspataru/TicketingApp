@@ -43,6 +43,21 @@ Eveniment::~Eveniment() {
 	}
 }
 
+Eveniment::Eveniment(const Eveniment& e) {
+	this->categorie = e.categorie;
+	if (e.tipEveniment != nullptr) {
+		tipEveniment = new char[strlen(e.tipEveniment) + 1];
+		strcpy_s(tipEveniment, strlen(e.tipEveniment) + 1, e.tipEveniment);
+	}
+	else tipEveniment = nullptr;
+	if (e.denumireEveniment != nullptr) {
+		denumireEveniment = new char[strlen(e.denumireEveniment) + 1];
+		strcpy_s(denumireEveniment, strlen(e.denumireEveniment) + 1, e.denumireEveniment);
+	}
+	else denumireEveniment = nullptr;
+	this->sala = e.sala;
+	this->durata = e.durata;
+}
 
 //operator de atribuire
 Eveniment& Eveniment::operator=(const Eveniment& e) {
