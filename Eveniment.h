@@ -16,6 +16,7 @@ public:
 	Eveniment();
 	Eveniment(string, const char*, const char*, string, int);
 	~Eveniment();
+	Eveniment(const Eveniment& );
 
 	Eveniment& operator=(const Eveniment& );
 	bool operator!();
