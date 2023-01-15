@@ -1,49 +1,58 @@
 #pragma once
 #include <string>
-#include<iostream>
 using namespace std;
+
 
 class Eveniment
 {
 private:
-	string categorie; 
+
+	int* randuriZone;
+	int** nrLocuri;//matrice pt locuri
+	int nrZone;
+	string* tipuriZone;
 	char* tipEveniment;
-	char* denumireEveniment;
-	string sala;
+	string denumireEveniment;
 	int durata;//in minute
 
+
+
 public:
+
+
 	Eveniment();
-	Eveniment(string, const char*, const char*, string, int);
+	Eveniment(int*, int**, int, string*, char*, string, int);
 	~Eveniment();
-	Eveniment(const Eveniment& );
+	Eveniment(const Eveniment&);
+	Eveniment& operator=(const Eveniment&);
+	Eveniment operator-=(int);
 
-	Eveniment& operator=(const Eveniment& );
-	bool operator!();
-	char& operator[](int index);
-	Eveniment operator-=(int );
 
-	string getCategorie();
-	char* getTipEveniment();
-	char* getDenumireEveniment();
-	string getSala();
+	int* getRanduriZone();
+	int** getNrLocuri();
+	string* getTipuriZone();
 	int getDurata();
+	int getNrZone();
+	string getDenumireEveniment();
+	char* getTipEveniment();
+	int getLocRand(int , int );
+	int* getNrLocuriZona(int);
+	int getRanduriZona(int);
 
-	void setCategorie(string);
-	void setTipEveniment(const char*);
-	void setDenumireEveniment(const char*);
-	void setSala(string);
+
+	void setRanduriZone(int*, int);
+	void setNrZone(int);
+	void setTipuriZone(string*, int);
+	void setDenumireEveniment(string);
+	void setTipEveniment(const char* t);
 	void setDurata(int);
-
+	
+	void transformareOre();
 	void durataNoua(int);
-	static int durataMedie(Eveniment, int);
-	static int nrConcerte(Eveniment*, int, char*);
+	void nrLocuriZone();
+	int  nrMax();
 
-
-
-
-	friend istream& operator>>(istream& in, Eveniment& e);
-	friend ostream& operator<<(ostream& out, Eveniment e);
+	friend ostream& operator<<(ostream&, Eveniment);
+	friend istream& operator>>(istream&, Eveniment&);
 };
-
 
